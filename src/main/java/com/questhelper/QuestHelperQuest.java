@@ -224,6 +224,14 @@ public enum QuestHelperQuest
 		Quest.Difficulty.ACHIEVEMENT_DIARY),
 	KARAMJA_ELITE("Karamja Elite Diary", QuestVarbits.ACHIEVEMENT_DIARY_KARAMJA_ELITE, 1, Quest.Type.ACHIEVEMENT_DIARY,
 		Quest.Difficulty.ACHIEVEMENT_DIARY),
+	FREMENNIK_EASY("Fremennik Easy Diary", QuestVarbits.ACHIEVEMENT_DIARY_FREMENNIK_EASY, 1, Quest.Type.ACHIEVEMENT_DIARY,
+		Quest.Difficulty.ACHIEVEMENT_DIARY),
+	FREMENNIK_MEDIUM("Fremennik Medium Diary", QuestVarbits.ACHIEVEMENT_DIARY_FREMENNIK_MEDIUM, 1, Quest.Type.ACHIEVEMENT_DIARY,
+		Quest.Difficulty.ACHIEVEMENT_DIARY),
+	FREMENNIK_HARD("Fremennik Hard Diary", QuestVarbits.ACHIEVEMENT_DIARY_FREMENNIK_HARD, 1, Quest.Type.ACHIEVEMENT_DIARY,
+		Quest.Difficulty.ACHIEVEMENT_DIARY),
+	FREMENNIK_ELITE("Fremennik Elite Diary", QuestVarbits.ACHIEVEMENT_DIARY_FREMENNIK_ELITE, 1, Quest.Type.ACHIEVEMENT_DIARY,
+		Quest.Difficulty.ACHIEVEMENT_DIARY),
 
 	// Generic
 	MA2_LOCATOR("Mage Arena II Locator", QuestVarbits.QUEST_THE_MAGE_ARENA_II, -1, Quest.Type.GENERIC,
