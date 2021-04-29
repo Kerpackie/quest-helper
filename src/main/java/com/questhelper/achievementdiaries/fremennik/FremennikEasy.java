@@ -69,7 +69,7 @@ public class FremennikEasy extends ComplexStateQuestHelper
     QuestStep claimReward, goToHuntingArea, catchBird, changeBoots, goToRockCrabs, getPickaxe, enterTunnelNearFairyRing,
         enterCaveEntranceToKeldagrim, speakToDwarvenBoatman, goToStonemasons, talkToStonemason, talkToJarvald,
         pickupSnapeGrass, goToStallArea, goDownStairsToEastSide, goUpstairsFromEastSide, goDownStairsToWestSide,
-        goUpstairsFromWestSide, chopOakTree, burnOakLog, returnWithJarvald, goThroughTrapdoorGE;
+        goUpstairsFromWestSide, chopOakTree, burnOakLog, returnWithJarvald, goThroughTrapdoorGE, enterStonghold;
 
     NpcStep killRockCrabs;
 
@@ -104,6 +104,7 @@ public class FremennikEasy extends ComplexStateQuestHelper
         doEasy.addStep(inWaterbirthIsle, returnWithJarvald);
         doEasy.addStep(new Conditions(notCaughtBird, inHuntingArea), catchBird);
         doEasy.addStep(notCaughtBird, goToHuntingArea);
+        doEasy.addStep(notEnterStronghold, enterStonghold);
         doEasy.addStep(new Conditions(notStealFromStall, inStallArea), stealFromStall);
         doEasy.addStep(new Conditions(notStealFromStall, inKeldCentreF1), goDownStairsToEastSide);
         doEasy.addStep(new Conditions(notStealFromStall, inKeldagrim), goToStallArea);
@@ -119,7 +120,6 @@ public class FremennikEasy extends ComplexStateQuestHelper
         doEasy.addStep(new Conditions(notBrowsedStonemason, inKledRiver), speakToDwarvenBoatman);
         doEasy.addStep(new Conditions(notBrowsedStonemason, inCaveToKeldagrim), enterCaveEntranceToKeldagrim);
         doEasy.addStep(notBrowsedStonemason, enterTunnelNearFairyRing);
-
 
         return doEasy;
     }
@@ -170,7 +170,6 @@ public class FremennikEasy extends ComplexStateQuestHelper
 
     public void loadZones()
     {
-
         rockCrabArea = new Zone(new WorldPoint(2653, 3712, 0), new WorldPoint(2724, 3732, 0));
         huntingArea = new Zone(new WorldPoint(2702, 3752, 0), new WorldPoint(2744, 3798, 0));
         rellekka = new Zone(new WorldPoint(2590, 3626, 0), new WorldPoint(2750, 3790, 0));
@@ -262,6 +261,10 @@ public class FremennikEasy extends ComplexStateQuestHelper
                 "Fill the bucket from the well in Rellekka.", bucket.highlighted());
         fillBucketFromWell.addIcon(ItemID.BUCKET);
 
+        //Enter Stronghold
+        enterStonghold = new ObjectStep(this, ObjectID.SECRET_DOOR, new WorldPoint(2827, 3647, 0),
+                "Enter the Troll Stronghold through the entrance north of the Rellekka Slayer Cave.");
+
         //Cut and burn an oak log
         chopOakTree = new ObjectStep(this, ObjectID.OAK_10820, new WorldPoint(2681, 3626, 0),
                 "Chop an Oak tree near the POH Portal south of Rellekka.", axe.highlighted(), tinderbox);
@@ -317,6 +320,7 @@ public class FremennikEasy extends ComplexStateQuestHelper
         allSteps.add(new PanelDetails("New Kicks", Collections.singletonList(changeBoots), coins500));
         allSteps.add(new PanelDetails("Collecting 'Grass'", Arrays.asList(talkToJarvald, pickupSnapeGrass)));
         allSteps.add(new PanelDetails("Twitch Star", Arrays.asList(goToHuntingArea, catchBird), birdSnare));
+        allSteps.add(new PanelDetails("Secret Passage", Collections.singletonList(enterStonghold)));
         allSteps.add(new PanelDetails("Munchies", Arrays.asList(goToStallArea, stealFromStall)));
         allSteps.add(new PanelDetails("House upgrade", Arrays.asList(goToStonemasons, talkToStonemason)));
         allSteps.add(new PanelDetails("Congratulations!", Collections.singletonList(claimReward)));
