@@ -1,0 +1,1 @@
+cmd /c gradlew :testRLPlugin --args="--developer-mode"

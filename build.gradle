@@ -28,6 +28,12 @@ group = 'com.questhelper'
 version = '4.0.8'
 sourceCompatibility = '1.8'
 
+task testRLPlugin(type: JavaExec) {
+	enableAssertions = true
+	classpath = sourceSets.test.runtimeClasspath
+	main = "com.questhelper.QuestHelperPluginTest"
+}
+
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
