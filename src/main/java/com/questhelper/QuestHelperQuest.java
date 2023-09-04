@@ -76,7 +76,8 @@ import com.questhelper.helpers.achievementdiaries.wilderness.WildernessMedium;
 import com.questhelper.helpers.miniquests.hisfaithfulservants.BarrowsHelper;
 import com.questhelper.helpers.miniquests.hisfaithfulservants.HisFaithfulServants;
 import com.questhelper.helpers.mischelpers.allneededitems.AllNeededItems;
-import com.questhelper.helpers.mischelpers.herbrun.HerbRun;
+import com.questhelper.helpers.mischelpers.farmruns.HerbRun;
+import com.questhelper.helpers.mischelpers.farmruns.TreeRun;
 import com.questhelper.helpers.quests.akingdomdivided.AKingdomDivided;
 import com.questhelper.helpers.miniquests.alfredgrimhandsbarcrawl.AlfredGrimhandsBarcrawl;
 import com.questhelper.helpers.quests.anightatthetheatre.ANightAtTheTheatre;
@@ -622,6 +623,7 @@ public enum QuestHelperQuest
 	DAG_ROUTE(new DagRouteHelper(), "Dagannoth Kings Route", QuestVarbits.QUEST_THE_FREMENNIK_ISLES, -1, QuestDetails.Type.GENERIC,
 		QuestDetails.Difficulty.GENERIC),
 	HERB_RUN(new HerbRun(), "Herb run", QuestVarbits.CUTSCENE, -1, QuestDetails.Type.GENERIC, QuestDetails.Difficulty.GENERIC),
+	TREE_RUN(new TreeRun(), "Tree run", QuestVarbits.CUTSCENE, -1, QuestDetails.Type.GENERIC, QuestDetails.Difficulty.GENERIC),
 	BARROWS_HELPER(new BarrowsHelper(), "Barrows helper", QuestVarbits.CUTSCENE, -1, QuestDetails.Type.GENERIC, QuestDetails.Difficulty.GENERIC),
 	// Skill
 	AGILITY(new Agility(), "Agility", Skill.AGILITY, 99, QuestDetails.Type.SKILL_P2P, QuestDetails.Difficulty.SKILL),

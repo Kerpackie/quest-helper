@@ -22,33 +22,42 @@
  *  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.questhelper.helpers.mischelpers.herbrun;
+package com.questhelper.helpers.mischelpers.farmruns;
 
-import lombok.Value;
-import net.runelite.client.plugins.timetracking.farming.CropState;
-import net.runelite.client.plugins.timetracking.farming.Produce;
-@Value
-class PatchState
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import net.runelite.api.annotations.Varbit;
+
+@RequiredArgsConstructor(
+	access = AccessLevel.PACKAGE
+)
+@Getter
+@ToString(onlyExplicitlyIncluded = true)
+class FarmingPatch
 {
-	Produce produce;
-	CropState cropState;
-	int stage;
+	@Setter(AccessLevel.PACKAGE)
+	@ToString.Include
+	private FarmingRegion region;
+	@ToString.Include
+	private final String name;
+	@Getter(onMethod_ = {@Varbit})
+	private final int varbit;
+	@ToString.Include
+	private final PatchImplementation implementation;
+	private int farmer = -1;
 
-	int getStages()
+	FarmingPatch(String name, @Varbit int varbit, PatchImplementation implementation, int farmer)
 	{
-		return cropState == CropState.HARVESTABLE || cropState == CropState.FILLING ? produce.getHarvestStages() : produce.getStages();
+		this(name, varbit, implementation);
+		this.farmer = farmer;
 	}
 
-	int getTickRate()
+	String configKey()
 	{
-		switch (cropState)
-		{
-			case HARVESTABLE:
-				return produce.getRegrowTickrate();
-			case GROWING:
-				return produce.getTickrate();
-			default:
-				return 0;
-		}
+		return region.getRegionID() + "." + varbit;
 	}
 }
+
